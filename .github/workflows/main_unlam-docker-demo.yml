@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://ghcr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_8dc3484f1d5f4c83a1bbc0a24d589834 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_59e68fbeffe0496a9e265fc938b94cd3 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_df39b11c0c364f5797ab31489f07cb43 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_2253f3632a84410d8b0191891240cffa }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_8dc3484f1d5f4c83a1bbc0a24d589834 }}/fereste/docker-demo:${{ github.sha }}
+        tags: ghcr.io/${{ secrets.AzureAppService_ContainerUsername_df39b11c0c364f5797ab31489f07cb43 }}/fereste/docker-demo:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'unlam-docker-demo'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_fd59449981124abd998075e2fd719dbf }}
-        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_8dc3484f1d5f4c83a1bbc0a24d589834 }}/fereste/docker-demo:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_744b0db6cdfd4c35958d40fb14fab273 }}
+        images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_df39b11c0c364f5797ab31489f07cb43 }}/fereste/docker-demo:${{ github.sha }}'
